@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SceneController">
    <children>
-      <Label fx:id="proton" layoutX="8.0" layoutY="6.0" text="Proton" />
       <Label fx:id="neutron" layoutX="69.0" layoutY="6.0" text="Neutron" />
       <Label fx:id="electron" layoutX="130.0" layoutY="6.0" text="Electron" />
-      <Rectangle fx:id="area" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="200.0" layoutX="0.0" layoutY="60" onMouseDragEntered="#onAreaEntered" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Label fx:id="atom" layoutX="69.0" layoutY="130" text="Atom">
+      <Rectangle fx:id="area" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="200.0" layoutX="0.0" layoutY="60" onDragDropped="#onDragDropped" onDragEntered="#onAreaEntered" onDragExited="#onAreaExited" onDragOver="#onDragOver" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Label fx:id="atom" layoutX="71.0" layoutY="136.0" text="Atom">
          <font>
             <Font size="24.0" />
          </font></Label>
+      <ImageView fx:id="proton" fitHeight="55.0" fitWidth="45.0" layoutX="7.0" layoutY="6.0" onDragDetected="#onPDragDetected" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Proton.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

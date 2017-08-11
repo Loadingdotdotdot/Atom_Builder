@@ -18,16 +18,16 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    static int protons = 10;
+    static int protons;
 
     public static void main(String[] args) {
         launch(args);
 
 
-        Element element = new Element();
-        element.setProtons(protons);
+        //Element element = new Element();
+        //element.setProtons(protons);
 
-        System.out.print(element.getName());
+        //System.out.print(element.getName());
 
     }
 
