@@ -9,8 +9,6 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SceneController">
    <children>
-      <Label fx:id="neutron" layoutX="69.0" layoutY="6.0" text="Neutron" />
-      <Label fx:id="electron" layoutX="130.0" layoutY="6.0" text="Electron" />
       <Rectangle fx:id="area" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="200.0" layoutX="0.0" layoutY="60" onDragDropped="#onDragDropped" onDragEntered="#onAreaEntered" onDragExited="#onAreaExited" onDragOver="#onDragOver" stroke="BLACK" strokeType="INSIDE" width="200.0" />
       <Label fx:id="atom" layoutX="71.0" layoutY="136.0" text="Atom">
          <font>
@@ -21,5 +19,16 @@
             <Image url="@Proton.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="neutron" fitHeight="59.0" fitWidth="45.0" layoutX="71.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Neutron.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="electron" fitHeight="45.0" fitWidth="45.0" layoutX="138.0" layoutY="6.0" onDragDetected="#onNDragDetected" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Electron.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="charge" layoutX="224.0" layoutY="104.0" text="Neutral" />
    </children>
 </AnchorPane>

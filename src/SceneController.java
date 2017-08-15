@@ -13,16 +13,35 @@ public class SceneController {
     @FXML
     public ImageView proton;
     @FXML
+    public ImageView electron;
+    @FXML
     public Label atom;
+    @FXML
+    public Label charge;
 
     private Element element = new Element();
     private int protons = 0;
+    private int neutrons = 0;
+    private int electrons = 0;
 
     @FXML
     private void onDragOver(DragEvent event) {
-        if (event.getDragboard().getString().equalsIgnoreCase("proton")){
+        if (event.getDragboard().getString().equalsIgnoreCase("proton")
+            || event.getDragboard().getString().equalsIgnoreCase("electron")){
             event.acceptTransferModes(TransferMode.ANY);
         }
+    }
+
+
+    @FXML
+    private  void onNDragDetected(MouseEvent event) {
+        Dragboard db = electron.startDragAndDrop(TransferMode.ANY);
+
+        ClipboardContent cb = new ClipboardContent();
+        cb.putString("electron");
+
+        db.setContent(cb);
+        event.consume();
     }
 
     @FXML
@@ -43,6 +62,10 @@ public class SceneController {
             protons++;
             element.setProtons(protons);
             atom.setText(""+element.getName());
+            checkForElectrons();
+        } else if (event.getDragboard().getString().equalsIgnoreCase("electron")) {
+            electrons++;
+            checkForElectrons();
         }
     }
 
@@ -55,6 +78,16 @@ public class SceneController {
     @FXML
     private void onAreaExited(DragEvent event) {
         area.setFill(Color.TRANSPARENT);
+    }
+
+    private void checkForElectrons() {
+        if (electrons > protons) {
+            charge.setText("Negative");
+        } else if (electrons < protons) {
+            charge.setText("Positive");
+        } else {
+            charge.setText("Neutral");
+        }
     }
 
 
