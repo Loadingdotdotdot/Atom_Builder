@@ -60,8 +60,7 @@ public class SceneController {
         //atom.setText("hehe dropped");
         if (event.getDragboard().getString().equalsIgnoreCase("proton")) {
             protons++;
-            element.setProtons(protons);
-            atom.setText(""+element.getName());
+            checkForProtons();
             checkForElectrons();
         } else if (event.getDragboard().getString().equalsIgnoreCase("electron")) {
             electrons++;
@@ -80,13 +79,21 @@ public class SceneController {
         area.setFill(Color.TRANSPARENT);
     }
 
+    private void checkForProtons() {
+        element.setProtons(protons);
+        atom.setText(""+element.getName());
+    }
+
     private void checkForElectrons() {
         if (electrons > protons) {
-            charge.setText("Negative");
+            charge.setText("Charge: Negative");
+            charge.setTextFill(Color.RED);
         } else if (electrons < protons) {
-            charge.setText("Positive");
+            charge.setText("Charge: Positive");
+            charge.setTextFill(Color.GREEN);
         } else {
-            charge.setText("Neutral");
+            charge.setText("Charge: Neutral");
+            charge.setTextFill(Color.BLACK);
         }
     }
 

@@ -14,8 +14,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("scene.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 900, 600));
+        primaryStage.setScene(new Scene(root, 300, 300));
         primaryStage.show();
+        primaryStage.setResizable(false);
     }
 
     static int protons;

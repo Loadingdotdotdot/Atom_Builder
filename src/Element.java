@@ -29,6 +29,8 @@ public class Element {
             case 4: return "Beryllium";
             case 5: return "Boron";
             case 6: return "Carbon";
+            case 7: return "Nitrogen";
+            case 8: return "Oxygen";
 
             default: return "Unknown";
         }
