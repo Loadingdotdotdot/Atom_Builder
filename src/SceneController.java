@@ -1,5 +1,6 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,6 +12,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -123,6 +126,13 @@ public class SceneController {
             protons++;
             checkForProtons();
             checkForElectrons();
+            Notifications notificationBuilder = Notifications.create()
+                    .title("Atom created")
+                    .text("You have created " + getElementName())
+                    .graphic(null)
+                    .hideAfter(Duration.seconds(3))
+                    .position(Pos.BOTTOM_RIGHT);
+            notificationBuilder.showInformation();
 
         } else if (event.getDragboard().getString().equalsIgnoreCase("electron")) {
             electrons++;
