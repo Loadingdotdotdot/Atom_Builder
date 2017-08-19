@@ -1,5 +1,6 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -15,11 +16,16 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
 import java.util.HashMap;
+import java.util.ResourceBundle;
+import java.util.prefs.BackingStoreException;
+import java.util.prefs.Preferences;
 
-public class SceneController {
+public class SceneController implements Initializable{
 
     @FXML
     public Rectangle area;
@@ -34,7 +40,9 @@ public class SceneController {
     @FXML
     public Button info;
 
-    private int protons = 0;
+    public static Preferences pref;
+
+    public int protons = 0;
     private int neutrons = 0;
     private int electrons = 0;
     private String elements[] = {"Hydrogen", "Helium", "Lithium", "Beryllium", "Boron", "Carbon",
@@ -56,7 +64,7 @@ public class SceneController {
         int[] carbon = {0, 1, 2}; map.put("C", carbon);
         int[] nitrogen = {0, 1, 2}; map.put("N", nitrogen);
         int[] oxygen = {0, 1, 2}; map.put("O", oxygen);
-        int[] flourine = {0, 1, 2}; map.put("F", flourine);
+        int[] fluorine = {0, 1, 2}; map.put("F", fluorine);
         int[] neon = {0, 1, 2}; map.put("Ne", neon);
         int[] sodium = {0, 1, 2}; map.put("Na", sodium);
         int[] magnesium = {0, 1, 2}; map.put("Mg", magnesium);
@@ -131,8 +139,11 @@ public class SceneController {
                     .text("You have created " + getElementName())
                     .graphic(null)
                     .hideAfter(Duration.seconds(3))
-                    .position(Pos.BOTTOM_RIGHT);
+                    .position(Pos.BOTTOM_RIGHT)
+                    .darkStyle();
             notificationBuilder.showInformation();
+            pref = Preferences.userNodeForPackage(Main.class);
+            pref.putInt("protons", protons);
 
         } else if (event.getDragboard().getString().equalsIgnoreCase("electron")) {
             electrons++;
@@ -188,5 +199,8 @@ public class SceneController {
     }
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
+    }
 }
