@@ -19,7 +19,6 @@ public class Main extends Application {
         primaryStage.setResizable(false);
     }
 
-    static int protons;
 
     public static void main(String[] args) {
         launch(args);
